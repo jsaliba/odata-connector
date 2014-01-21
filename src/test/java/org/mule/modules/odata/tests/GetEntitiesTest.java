@@ -51,14 +51,14 @@ public class GetEntitiesTest extends FunctionalTestCase {
 	}
 	
 	
-	protected <T> MuleEvent runFlow(String flowName) throws Exception {
-		return this.runFlow(flowName, null);
-	}
-	
-	protected <T> MuleEvent runFlow(String flowName, Object payload) throws Exception {
-    	Flow flow = lookupFlowConstruct(flowName);
-    	return flow.process(getTestEvent(payload));
-    }
+//	protected <T> MuleEvent runFlow(String flowName) throws Exception {
+//		return this.runFlow(flowName, null);
+//	}
+//	
+//	protected <T> MuleEvent runFlow(String flowName, Object payload) throws Exception {
+//    	Flow flow = lookupFlowConstruct(flowName);
+//    	return flow.process(getTestEvent(payload));
+//    }
 	
 	/**
     * Run the flow specified by name and assert equality on the expected output
