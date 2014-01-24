@@ -5,7 +5,6 @@ import static org.junit.Assert.fail;
 
 import java.util.List;
 
-import org.apache.commons.lang.builder.EqualsBuilder;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -30,15 +29,7 @@ public class CreateEntityTestCases extends ODataTestParent {
 			createEntity(person, entitySetName);
 			
 			List<Person> entities = getEntities(entitySetName, Person.class.getName());
-			boolean found = false;
-			for (Person entity : entities) {
-				if (EqualsBuilder.reflectionEquals(entity, person)) {
-					found = true;
-					break;
-				}
-			}
-			
-			assertTrue(found);
+			assertTrue(entities.contains(person));
 		}
 		catch (Exception e) {
 			fail(ConnectorTestUtils.getStackTrace(e));
