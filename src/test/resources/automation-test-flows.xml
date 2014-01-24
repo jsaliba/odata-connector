@@ -30,4 +30,11 @@ http://www.mulesoft.org/schema/mule/odata http://www.mulesoft.org/schema/mule/od
     	<odata:update-entity config-ref="OData" keyAttribute="#[payload.keyAttribute]" entity-ref="#[payload.entityRef]" entitySetName="#[payload.entitySetName]" />
     </flow>
     
+    <flow name="batch">
+    	<odata:batch config-ref="OData">
+    		<odata:create-entity config-ref="OData" entitySetName="#[payload.entitySetName]" entity-ref="#[payload.entityRef]" />
+    		<odata:delete-entity config-ref="OData" keyAttribute="#[payload.keyAttribute]" entity-ref="#[payload.entityRef]" entitySetName="#[payload.entitySetName]"  />
+    	</odata:batch>
+    </flow>
+    
 </mule>

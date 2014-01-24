@@ -67,6 +67,14 @@ public class ODataTestParent extends ConnectorTestCase {
 		return runFlowAndGetPayload("get-entities");
 	}
 	
+	public void batch(String entitySetName, String keyAttribute, Person entity) throws Exception {
+		upsertOnTestRunMessage("entitySetName", entitySetName);
+		upsertOnTestRunMessage("keyAttribute", keyAttribute);
+		upsertOnTestRunMessage("entityRef", entity);
+
+		runFlowAndGetPayload("batch");
+	}
+	
 	
 	
 }
