@@ -165,7 +165,7 @@ public class ODataClientRequest {
    * @return a new request builder
    */
   public static ODataClientRequest delete(String url) {
-    return new ODataClientRequest("DELETE", url, null, null, StringUtils.EMPTY);
+	  return new ODataClientRequest("DELETE", url, null, null, null);
   }
 
   /**
