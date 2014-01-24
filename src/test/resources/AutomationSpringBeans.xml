@@ -26,7 +26,20 @@
 		        <property name="surname" value="Doe" />
 		    </bean>		    
 		</entry>
-		<entry key="entitySetName" value="Person" />
+		<entry key="entitySetName" value="Person" />   
+	    <entry key="keyAttribute" value="id" />
+	</util:map>
+	
+	<util:map id="deleteEntityTestData" map-class="java.util.HashMap" key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+	    <entry key="entity">
+		    <bean class="org.mule.modules.odata.automation.testcases.provider.Person">
+		        <property name="id" value="1" />            
+		        <property name="name" value="John" />
+		        <property name="surname" value="Doe" />
+		    </bean>
+	    </entry>	
+	    <entry key="entitySetName" value="Person" />	    
+	    <entry key="keyAttribute" value="id" />
 	</util:map>
 	
 	<util:map id="getEntitiesTestData" map-class="java.util.HashMap" key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
@@ -49,7 +62,8 @@
 			    </bean>		    
 	        </list>
 	    </entry>		    
-	    <entry key="entitySetName" value="Person" />
+	    <entry key="entitySetName" value="Person" />   
+	    <entry key="keyAttribute" value="id" />
 	</util:map>
 			
 </beans>

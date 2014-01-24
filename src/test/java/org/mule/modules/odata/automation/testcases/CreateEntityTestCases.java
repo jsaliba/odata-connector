@@ -47,6 +47,11 @@ public class CreateEntityTestCases extends ODataTestParent {
 	
 	@After
 	public void tearDown() throws Exception {
+		Person entity = getTestRunMessageValue("entity");
+		String entitySetName = getTestRunMessageValue("entitySetName");
+		String keyAttribute = getTestRunMessageValue("keyAttribute");
+		
+		deleteEntity(entitySetName, keyAttribute, entity);
 	}
 	
 }
