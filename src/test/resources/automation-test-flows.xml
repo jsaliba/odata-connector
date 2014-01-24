@@ -8,9 +8,22 @@
 http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/odata http://www.mulesoft.org/schema/mule/odata/current/mule-odata.xsd">
 
-	<context:property-placeholder location="automation-credentials.properties " />
+	<context:property-placeholder location="automation-credentials.properties" />
 	
-    <odata:config name="OData" username="#[odata.username]" password="#[odata.password]" serviceUri="#[odata.serviceUri]" consumerVersion="#[odata.consumerVersion]" formatType="#[odata.formatType]">
+    <odata:config name="OData" username="${odata.username}" password="${odata.password}" serviceUri="${odata.serviceUri}" consumerVersion="${odata.consumerVersion}" formatType="${odata.formatType}">
         <odata:connection-pooling-profile initialisationPolicy="INITIALISE_ONE" exhaustedAction="WHEN_EXHAUSTED_GROW"/>
     </odata:config>
+    
+    <flow name="create-entity">
+    	<odata:create-entity config-ref="OData" entitySetName="#[payload.entitySetName]" entity-ref="#[payload.entityRef]" />
+    </flow>
+    
+    <flow name="delete-entity">
+    	<odata:delete-entity config-ref="OData" entitySetName="#[payload.entitySetName]" keyAttribute="#[payload.keyAttribute]" entity-ref="#[payload.entityRef]" />
+    </flow>
+    
+    <flow name="get-entities">
+    	<odata:get-entities config-ref="OData" entitySetName="#[payload.entitySetName]" returnClass="#[payload.returnClass]" />
+    </flow>
+    
 </mule>
