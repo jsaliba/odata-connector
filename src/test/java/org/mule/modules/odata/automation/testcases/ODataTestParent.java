@@ -43,13 +43,21 @@ public class ODataTestParent extends ConnectorTestCase {
 
 		runFlowAndGetPayload("create-entity");
 	}
-	
+
 	public void deleteEntity(String entitySetName, String keyAttribute, Person entity) throws Exception {
 		upsertOnTestRunMessage("entitySetName", entitySetName);
 		upsertOnTestRunMessage("keyAttribute", keyAttribute);
 		upsertOnTestRunMessage("entityRef", entity);
 
 		runFlowAndGetPayload("delete-entity");
+	}
+	
+	public void updateEntity(String entitySetName, String keyAttribute, Person entity) throws Exception {
+		upsertOnTestRunMessage("entitySetName", entitySetName);
+		upsertOnTestRunMessage("keyAttribute", keyAttribute);
+		upsertOnTestRunMessage("entityRef", entity);
+
+		runFlowAndGetPayload("update-entity");
 	}
 	
 	public List<Person> getEntities(String entitySetName, String returnClass) throws Exception {

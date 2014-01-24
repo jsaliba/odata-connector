@@ -3,6 +3,8 @@ package org.mule.modules.odata.automation.testcases.provider;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import org.apache.commons.lang.builder.EqualsBuilder;
+
 
 @Entity
 public class Person {
@@ -47,6 +49,14 @@ public class Person {
 	@Override
 	public String toString() {
 		return "Id: "+id+"\nName: "+name+"\nSurname: "+surname;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Person) {
+			return EqualsBuilder.reflectionEquals(this, obj);
+		}
+		return false;
 	}
 	
 }

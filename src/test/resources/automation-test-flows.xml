@@ -26,4 +26,8 @@ http://www.mulesoft.org/schema/mule/odata http://www.mulesoft.org/schema/mule/od
     	<odata:get-entities config-ref="OData" entitySetName="#[payload.entitySetName]" returnClass="#[payload.returnClass]" />
     </flow>
     
+    <flow name="update-entity">
+    	<odata:update-entity config-ref="OData" keyAttribute="#[payload.keyAttribute]" entity-ref="#[payload.entityRef]" entitySetName="#[payload.entitySetName]" />
+    </flow>
+    
 </mule>
