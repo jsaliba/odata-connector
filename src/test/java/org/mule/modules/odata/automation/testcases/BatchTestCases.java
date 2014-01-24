@@ -10,6 +10,7 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.mule.modules.odata.automation.testcases.provider.Person;
 import org.mule.modules.tests.ConnectorTestUtils;
+import org.odata4j.producer.resources.BatchResult;
 
 public class BatchTestCases extends ODataTestParent {
 	
@@ -26,7 +27,7 @@ public class BatchTestCases extends ODataTestParent {
 			String entitySetName = getTestRunMessageValue("entitySetName");
 			String keyAttribute = getTestRunMessageValue("keyAttribute");
 			
-			batch(entitySetName, keyAttribute, entity);
+			BatchResult result = batch(entitySetName, keyAttribute, entity);
 			
 			List<Person> entities = getEntities(entitySetName, entity.getClass().getName());
 			assertFalse(entities.contains(entity));

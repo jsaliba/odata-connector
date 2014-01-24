@@ -9,6 +9,7 @@ import org.junit.rules.Timeout;
 import org.mule.modules.odata.automation.testcases.provider.ODataServiceProvider;
 import org.mule.modules.odata.automation.testcases.provider.Person;
 import org.mule.modules.tests.ConnectorTestCase;
+import org.odata4j.producer.resources.BatchResult;
 import org.odata4j.producer.resources.DefaultODataProducerProvider;
 import org.odata4j.producer.server.ODataServer;
 import org.springframework.stereotype.Controller;
@@ -67,12 +68,12 @@ public class ODataTestParent extends ConnectorTestCase {
 		return runFlowAndGetPayload("get-entities");
 	}
 	
-	public void batch(String entitySetName, String keyAttribute, Person entity) throws Exception {
+	public BatchResult batch(String entitySetName, String keyAttribute, Person entity) throws Exception {
 		upsertOnTestRunMessage("entitySetName", entitySetName);
 		upsertOnTestRunMessage("keyAttribute", keyAttribute);
 		upsertOnTestRunMessage("entityRef", entity);
 
-		runFlowAndGetPayload("batch");
+		return runFlowAndGetPayload("batch");
 	}
 	
 	
