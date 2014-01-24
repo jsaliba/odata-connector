@@ -21,7 +21,7 @@ public class DeleteEntityTestCases extends ODataTestParent {
 		
 	}
 	
-	@Category({RegressionTests.class})
+	@Category({SmokeTests.class, RegressionTests.class})
 	@Test
 	public void testDeleteEntity() throws Exception {
 		Person entity = getTestRunMessageValue("entity");
