@@ -424,7 +424,11 @@ public class ODataConnector {
     private BatchBodyPart toBatchBodyPart(ODataClientRequest request) {
     	BatchBodyPart part = new BatchBodyPart();
     	String payload = null;
-    	
+
+//    	if (request.getPayload() == null) {
+//    		payload = StringUtils.EMPTY;
+//    	}
+//    	else
     	if (request.getPayload() instanceof String) {
     		payload = (String) request.getPayload();
     	} else {
