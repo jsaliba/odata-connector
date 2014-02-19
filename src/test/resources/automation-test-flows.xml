@@ -15,25 +15,25 @@ http://www.mulesoft.org/schema/mule/odata http://www.mulesoft.org/schema/mule/od
     </odata:config>
     
     <flow name="create-entity">
-    	<odata:create-entity config-ref="OData" entitySetName="#[payload.entitySetName]" entity-ref="#[payload.entityRef]" />
+    	<odata:create-entity config-ref="OData" entitySetName="#[flowVars.entitySetName]" entity-ref="#[flowVars.entityRef]" />
     </flow>
     
     <flow name="delete-entity">
-    	<odata:delete-entity config-ref="OData" entitySetName="#[payload.entitySetName]" keyAttribute="#[payload.keyAttribute]" entity-ref="#[payload.entityRef]" />
+    	<odata:delete-entity config-ref="OData" entitySetName="#[flowVars.entitySetName]" keyAttribute="#[flowVars.keyAttribute]" entity-ref="#[flowVars.entityRef]" />
     </flow>
     
     <flow name="get-entities">
-    	<odata:get-entities config-ref="OData" entitySetName="#[payload.entitySetName]" returnClass="#[payload.returnClass]" />
+    	<odata:get-entities config-ref="OData" entitySetName="#[flowVars.entitySetName]" returnClass="#[flowVars.returnClass]" />
     </flow>
     
     <flow name="update-entity">
-    	<odata:update-entity config-ref="OData" keyAttribute="#[payload.keyAttribute]" entity-ref="#[payload.entityRef]" entitySetName="#[payload.entitySetName]" />
+    	<odata:update-entity config-ref="OData" keyAttribute="#[flowVars.keyAttribute]" entity-ref="#[flowVars.entityRef]" entitySetName="#[flowVars.entitySetName]" />
     </flow>
     
     <flow name="batch">
     	<odata:batch config-ref="OData">
-    		<odata:create-entity config-ref="OData" entitySetName="#[payload.entitySetName]" entity-ref="#[payload.entityRef]" />
-    		<odata:delete-entity config-ref="OData" keyAttribute="#[payload.keyAttribute]" entity-ref="#[payload.entityRef]" entitySetName="#[payload.entitySetName]"  />
+      		<odata:create-entity config-ref="OData" entitySetName="#[flowVars.entitySetName]" entity-ref="#[flowVars.entityRef]" />
+    		<odata:delete-entity config-ref="OData" keyAttribute="#[flowVars.keyAttribute]" entity-ref="#[flowVars.entityRef]" entitySetName="#[flowVars.entitySetName]"  />
     	</odata:batch>
     </flow>
     
